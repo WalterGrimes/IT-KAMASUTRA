@@ -1,19 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import s from './Profile.module.css';
-import MyPosts from './MyPosts/MyPosts.jsx';
+import Profileinfo from './Profileinfo/Profileinfo'; 
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 
-const Profile = () => {
+const Profile = (props) => {
+  const { posts, newPostText } = props;
+
   return (
-  <div className={s.content}>
-        <div>
-          <img src="https://w0.peakpx.com/wallpaper/15/456/HD-wallpaper-swiss-mountains-valley-nature-landscape-u-16-9-widescreen-background-1096.jpg" alt="Nature" />
-        </div>
-      <div>
-        ava + description
-      </div>
-      <MyPosts />
+    <div className={s.profile}>
+      <Profileinfo profile={props.profile} />
+      <MyPostsContainer />
     </div>
-    )
-}
+  );
+};
 
-export default Profile;
+const mapStateToProps = (state) => ({
+  posts: state.profilePage.posts,
+  newPostText: state.profilePage.newPostText
+});
+
+export default connect(mapStateToProps)(Profile);

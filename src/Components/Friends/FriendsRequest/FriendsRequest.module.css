@@ -1,0 +1,16 @@
+.friendRequest {
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+  color: #333;
+}
+
+.notificationDot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+}

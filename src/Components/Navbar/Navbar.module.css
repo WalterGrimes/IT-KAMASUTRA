@@ -1,7 +1,72 @@
 .nav{
   grid-area: n;
   background-color:#006269;
+  padding: 20px;
 }
-.item{
+.item a{
   color:white;
+  text-decoration: none;
+  padding: 50px; 
+  border-radius: 2px; 
+  padding: 10px; 
+  font-weight: bold; 
+  text-decoration: none;
+  transition: color 0.3s, text-decoration 0.3s;
+  
+}
+.item a:hover{
+   color: #4ce81c;
+}
+
+.activeLink { 
+  color:gold;
+}
+
+.friends {
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.friends a {
+  text-decoration: none;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+.friends a:hover {
+  color: #4ce81c;
+}
+
+.item {
+  position: relative;
+  padding: 5px 0;
+}
+
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.item {
+  padding: 10px 0;
+}
+
+.activeLink {
+  color: blue;
+  font-weight: bold;
+  position: relative;
+}
+
+.notificationBadge {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  right: 100px;
 }

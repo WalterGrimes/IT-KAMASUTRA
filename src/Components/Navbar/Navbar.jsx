@@ -1,23 +1,30 @@
 import React from 'react';
-import classes from './Navbar.module.css';
+import s from './Navbar.module.css';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav className={classes.nav}>
-      <div className={classes.item}>
-        <a>Profile</a>
+    <nav className={s.nav}>
+      <div className={s.item}>
+        <NavLink to='/profile' className={({ isActive }) => isActive ? s.activeLink : ''}>Profile</NavLink>     
       </div>
-      <div className={classes.item}>
-        <a>Messages</a>
+      <div className={s.item}>
+        <NavLink to='/dialogs' className={({ isActive }) => isActive ? s.activeLink : ''}>Messages</NavLink>
       </div>
-      <div className={classes.item}>
-        <a>News</a>
+      <div className={s.item}>
+        <a href="#news">News</a>
       </div>
-      <div className={classes.item}>
-        <a>Music</a>
+      <div className={s.item}>
+        <a href="#music">Music</a>
       </div>
-      <div className={classes.item}>
-        <a>Settings</a>
+      <div className={s.item}>
+        <a href="#settings">Settings</a>
+      </div>
+      <div className={s.item} style={{ position: 'relative' }}>
+        <NavLink to='/friends' className={({ isActive }) => isActive ? s.activeLink : ''}>
+          Friends
+          <span className={s.notificationBadge}></span>
+        </NavLink>
       </div>
     </nav>
   );
