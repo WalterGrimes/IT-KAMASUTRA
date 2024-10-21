@@ -11,6 +11,8 @@ import {
   toggleIsFetching,
 } from '../../redux/friendlist-reducer';
 import Preloader from '../common/Preloader/Preloader';
+import { usersAPI } from '../../api/api';
+
 
 class FriendsContainer extends React.Component {
   componentDidMount() {
@@ -27,16 +29,13 @@ class FriendsContainer extends React.Component {
 
   fetchUsers = (page) => {
     console.log('Запрос пользователей для страницы:', page);
-    this.props.toggleIsFetching(true);  // Установка isFetching в true
-
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log('Полученные пользователи:', response.data.items);
-        this.props.setUsers(response.data.items);
-        this.props.setTotalFriendsCount(response.data.totalCount);
+    this.props.toggleIsFetching(true);  
+    
+    usersAPI.getUsers(this.props.currentPage, this.pageSize )
+    .then((data) => {
+        console.log('Полученные пользователи:', data.items);
+        this.props.setUsers(data.items);
+        this.props.setTotalFriendsCount(data.totalCount);
       })
       .catch((error) => {
         console.error('Ошибка при загрузке пользователей:', error);
